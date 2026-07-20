@@ -1,3 +1,4 @@
+import Estatisticas from "./pages/Estatisticas";
 import Jogos from "./pages/Jogos";
 import Elenco from "./pages/Elenco";
 import Home from "./pages/Home";
@@ -42,9 +43,7 @@ export default function App() {
   
 
 
-function Stats() {
-  return <div className="card"><h2>Estatísticas</h2></div>;
-}
+
 
 function Admin() {
   return <div className="card"><h2>Administração</h2></div>;
