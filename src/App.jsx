@@ -1,3 +1,4 @@
+import Home from "./pages/Home";
 import jogadores from "./data/jogadores";
 import { useState } from "react";
 import clube from "./data/clube";
@@ -31,26 +32,7 @@ export default function App() {
   );
 }
 
-function Home() {
-  return (
-    <>
-      <div className="card">
-        <h2>Próximo jogo</h2>
-        <p>⚽ {clube.proximoJogo.adversario}</p>
-        <p>📅 {clube.proximoJogo.data}</p>
-        <p>🕒 {clube.proximoJogo.horario}</p>
-      </div>
 
-      <div className="card">
-        <h2>Campanha</h2>
-        <p>Jogos: {clube.campanha.jogos}</p>
-        <p>Vitórias: {clube.campanha.vitorias}</p>
-        <p>Empates: {clube.campanha.empates}</p>
-        <p>Derrotas: {clube.campanha.derrotas}</p>
-      </div>
-    </>
-  );
-}
 
 function Jogos() {
   return <div className="card"><h2>Jogos</h2></div>;
