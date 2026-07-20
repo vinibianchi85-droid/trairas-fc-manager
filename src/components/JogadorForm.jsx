@@ -1,0 +1,1 @@
+import {useState} from 'react';export default function JogadorForm({onAdd}){const[n,setN]=useState('');return <><input value={n} onChange={e=>setN(e.target.value)} placeholder='Nome'/><button onClick={()=>{if(n){onAdd(n);setN('')}}}>Adicionar</button></>}
