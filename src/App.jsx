@@ -28,15 +28,29 @@ export default function App() {
       </main>
 
       <footer className="menu">
-        <button onClick={() => setPagina("home")}>🏠</button>
-        <button onClick={() => setPagina("jogos")}>⚽</button>
-        <button onClick={() => setPagina("elenco")}>👥</button>
-        <button onClick={() => setPagina("stats")}>📊</button>
-        <button onClick={() => setPagina("admin")}>⚙️</button>
-      </footer>
-    </div>
-  );
-}
+        <button onClick={() => setPagina("home")}>
+  Home
+</button>
+
+<button onClick={() => setPagina("jogos")}>
+  Jogos
+</button>
+
+<button onClick={() => setPagina("elenco")}>
+  Elenco
+</button>
+
+<button onClick={() => setPagina("stats")}>
+  Estatísticas
+</button>
+
+<button onClick={() => setPagina("campeonato")}>
+  Campeonato
+</button>
+
+<button onClick={() => setPagina("admin")}>
+  Admin
+</button>
 
 
 
