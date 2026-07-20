@@ -1,10 +1,1 @@
-import FormJogo from "../components/FormJogo";
-export default function Admin() {
-  return (
-    <>
-      <h2>⚙️ Administração</h2>
-
-      <FormJogo />
-    </>
-  );
-}
+export default function Admin(){return(<div><h1>⚙️ Admin</h1><p>Painel administrativo.</p></div>);}
