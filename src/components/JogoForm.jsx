@@ -7,7 +7,8 @@ export default function JogoForm({ onSalvar }) {
   const [assistencias, setAssistencias] = useState("");
   const [amarelos, setAmarelos] = useState("");
   const [vermelhos, setVermelhos] = useState("");
-
+  
+  const [data, setData] = useState("");
   function salvar() {
     onSalvar({
       id: Date.now(),
@@ -54,6 +55,12 @@ export default function JogoForm({ onSalvar }) {
         onChange={(e) => setPlacar(e.target.value)}
       />
 
+      <input
+       type="date"
+       value={data}
+       onChange={(e) => setData(e.target.value)}
+      />
+      
       <input
         placeholder="Artilheiros (separados por vírgula)"
         value={artilheiros}
