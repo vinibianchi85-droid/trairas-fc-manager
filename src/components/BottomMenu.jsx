@@ -1,0 +1,1 @@
+export default function BottomMenu(){return <nav></nav>}
