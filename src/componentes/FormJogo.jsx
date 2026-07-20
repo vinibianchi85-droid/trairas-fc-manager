@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 export default function FormJogo() {
   const [adversario, setAdversario] = useState("");
   const [data, setData] = useState("");
