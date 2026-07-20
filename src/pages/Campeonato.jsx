@@ -1,28 +1,72 @@
 import { load } from "../utils/storage";
-import { tabela } from "../utils/campeonato";
+import { gerarClassificacao } from "../utils/classificacao";
 
 export default function Campeonato() {
 
   const jogos = load("jogos", []);
 
-  const dados = tabela(jogos);
+  const tabela = gerarClassificacao(jogos);
 
   return (
+
     <div className="pagina">
 
       <h1>🏆 Campeonato</h1>
 
-      <div className="card">
-        <p><strong>Pontos:</strong> {dados.pontos}</p>
-        <p><strong>Jogos:</strong> {dados.jogos}</p>
-        <p><strong>Vitórias:</strong> {dados.vitorias}</p>
-        <p><strong>Empates:</strong> {dados.empates}</p>
-        <p><strong>Derrotas:</strong> {dados.derrotas}</p>
-        <p><strong>Gols Pró:</strong> {dados.golsPro}</p>
-        <p><strong>Gols Contra:</strong> {dados.golsContra}</p>
-        <p><strong>Saldo:</strong> {dados.saldo}</p>
-      </div>
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>Time</th>
+            <th>P</th>
+            <th>J</th>
+            <th>V</th>
+            <th>E</th>
+            <th>D</th>
+            <th>GP</th>
+            <th>GC</th>
+            <th>SG</th>
+            <th>%</th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          {tabela.map((time) => (
+
+            <tr key={time.time}>
+
+              <td>{time.time}</td>
+
+              <td>{time.pontos}</td>
+
+              <td>{time.jogos}</td>
+
+              <td>{time.vitorias}</td>
+
+              <td>{time.empates}</td>
+
+              <td>{time.derrotas}</td>
+
+              <td>{time.golsPro}</td>
+
+              <td>{time.golsContra}</td>
+
+              <td>{time.saldo}</td>
+
+              <td>{time.aproveitamento}%</td>
+
+            </tr>
+
+          ))}
+
+        </tbody>
+
+      </table>
 
     </div>
+
   );
 }
