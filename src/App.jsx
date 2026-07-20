@@ -1,3 +1,4 @@
+import Admin from "./pages/Admin";
 import Campeonato from "./pages/Campeonato";
 import Estatisticas from "./pages/Estatisticas";
 import Jogos from "./pages/Jogos";
@@ -47,6 +48,4 @@ export default function App() {
 
 
 
-function Admin() {
-  return <div className="card"><h2>Administração</h2></div>;
-}
+
