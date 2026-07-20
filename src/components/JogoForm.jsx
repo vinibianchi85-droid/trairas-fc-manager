@@ -14,6 +14,7 @@ export default function JogoForm({ onSalvar }) {
       id: Date.now(),
       adversario,
       placar,
+      data
       artilheiros: artilheiros
         .split(",")
         .map((n) => n.trim())
