@@ -1,3 +1,4 @@
+import Jogos from "./pages/Jogos";
 import Elenco from "./pages/Elenco";
 import Home from "./pages/Home";
 import jogadores from "./data/jogadores";
@@ -35,9 +36,7 @@ export default function App() {
 
 
 
-function Jogos() {
-  return <div className="card"><h2>Jogos</h2></div>;
-}
+
 
 
   
