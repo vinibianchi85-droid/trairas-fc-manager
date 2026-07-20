@@ -1,0 +1,1 @@
+export function calcular(jogos=[]){let v=0,e=0,d=0,gp=0,gs=0;for(const j of jogos){const m=(j.placar||'').split('-').map(s=>parseInt(s.trim()));if(m.length===2&&!m.some(isNaN)){gp+=m[0];gs+=m[1];if(m[0]>m[1])v++;else if(m[0]===m[1])e++;else d++;}}return{vitorias:v,empates:e,derrotas:d,golsPro:gp,golsContra:gs};}
