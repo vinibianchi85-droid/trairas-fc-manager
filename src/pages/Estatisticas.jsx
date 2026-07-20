@@ -1,1 +1,43 @@
-import {load} from '../utils/storage';import {calcular} from '../utils/estatisticas';export default function Estatisticas(){const r=calcular(load('jogos',[]));return <div><h2>Estatísticas</h2><p>Vitórias: {r.vitorias}</p><p>Empates: {r.empates}</p><p>Derrotas: {r.derrotas}</p><p>Gols Pró: {r.golsPro}</p><p>Gols Contra: {r.golsContra}</p></div>}
+import { load } from "../utils/storage";
+import { calcularEstatisticasJogadores } from "../utils/estatisticasJogadores";
+
+export default function Estatisticas() {
+
+  const jogos = load("jogos", []);
+
+  const ranking = calcularEstatisticasJogadores(jogos);
+
+  return (
+    <div className="pagina">
+
+      <h1>📊 Estatísticas</h1>
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Jogador</th>
+            <th>Jogos</th>
+            <th>Gols</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          {ranking.map((jogador) => (
+
+            <tr key={jogador.nome}>
+              <td>{jogador.nome}</td>
+              <td>{jogador.jogos}</td>
+              <td>{jogador.gols}</td>
+            </tr>
+
+          ))}
+
+        </tbody>
+
+      </table>
+
+    </div>
+  );
+}
