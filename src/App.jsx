@@ -1,3 +1,4 @@
+import Campeonato from "./pages/Campeonato";
 import Estatisticas from "./pages/Estatisticas";
 import Jogos from "./pages/Jogos";
 import Elenco from "./pages/Elenco";
@@ -21,6 +22,7 @@ export default function App() {
         {pagina === "jogos" && <Jogos />}
         {pagina === "elenco" && <Elenco />}
         {pagina === "stats" && <Stats />}
+        {pagina === "campeonato" && <Campeonato />}
         {pagina === "admin" && <Admin />}
       </main>
 
