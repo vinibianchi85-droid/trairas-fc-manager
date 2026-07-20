@@ -1,1 +1,1 @@
-export default function Estatisticas(){return <div><h2>Estatísticas</h2></div>}
+import {load} from '../utils/storage';import {calcular} from '../utils/estatisticas';export default function Estatisticas(){const r=calcular(load('jogos',[]));return <div><h2>Estatísticas</h2><p>Vitórias: {r.vitorias}</p><p>Empates: {r.empates}</p><p>Derrotas: {r.derrotas}</p><p>Gols Pró: {r.golsPro}</p><p>Gols Contra: {r.golsContra}</p></div>}
