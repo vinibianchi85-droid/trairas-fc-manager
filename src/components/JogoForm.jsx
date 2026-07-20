@@ -1,0 +1,2 @@
+import {useState} from 'react';
+export default function JogoForm({onAdd}){const[a,setA]=useState('');const[p,setP]=useState('');return<div><input placeholder='Adversário' value={a} onChange={e=>setA(e.target.value)}/><input placeholder='Placar' value={p} onChange={e=>setP(e.target.value)}/><button onClick={()=>{if(a)onAdd({id:Date.now(),adversario:a,placar:p})}}>Salvar</button></div>}
