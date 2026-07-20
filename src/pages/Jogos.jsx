@@ -1,1 +1,2 @@
-export default function Jogos(){return <div><h2>Jogos</h2></div>}
+import {useEffect,useState} from 'react';import JogoForm from '../components/JogoForm';import {load,save} from '../utils/storage';
+export default function Jogos(){const[j,setJ]=useState(()=>load('jogos',[]));useEffect(()=>save('jogos',j),[j]);return<div><h2>Jogos</h2><JogoForm onAdd={x=>setJ([...j,x])}/><ul>{j.map(g=><li key={g.id}>{g.adversario} - {g.placar}</li>)}</ul></div>}
