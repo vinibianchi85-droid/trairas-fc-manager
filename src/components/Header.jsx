@@ -1,1 +1,1 @@
-
+export default function Header(){return <header><h1>Traíras FC Manager</h1></header>}
