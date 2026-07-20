@@ -1,1 +1,1 @@
-export default function Elenco(){return <div><h2>Elenco</h2></div>}
+import {useState,useEffect} from 'react';import JogadorForm from '../components/JogadorForm';import{load,save}from'../utils/storage';export default function Elenco(){const[j,setJ]=useState(()=>load('jogadores',[]));useEffect(()=>save('jogadores',j),[j]);return<div><h2>Elenco</h2><JogadorForm onAdd={n=>setJ([...j,{id:Date.now(),nome:n}])}/><ul>{j.map(x=><li key={x.id}>{x.nome}</li>)}</ul></div>}
