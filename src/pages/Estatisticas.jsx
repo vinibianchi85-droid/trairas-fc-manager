@@ -1,1 +1,1 @@
-export default function Estatisticas(){return(<div className="stats-page"><h1>📊 Estatísticas</h1><p>Estatísticas aparecerão aqui.</p></div>);}
+export default function Estatisticas(){return <div><h2>Estatísticas</h2></div>}

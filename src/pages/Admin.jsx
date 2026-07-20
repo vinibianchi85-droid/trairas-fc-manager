@@ -1,1 +1,1 @@
-export default function Admin(){return(<div><h1>⚙️ Admin</h1><p>Painel administrativo.</p></div>);}
+export default function Admin(){return <div><h2>Admin</h2></div>}

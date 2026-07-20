@@ -1,1 +1,1 @@
-export default function Home(){return(<div className="home-page"><h1>🐟 Traíras FC Manager</h1><p>Bem-vindo ao aplicativo.</p></div>);}
+export default function Home(){return <div><h2>Home</h2></div>}

@@ -1,1 +1,1 @@
-export default function Jogos(){return(<div className="jogos-page"><h1>⚽ Jogos</h1><p>Nenhum jogo cadastrado.</p></div>);}
+export default function Jogos(){return <div><h2>Jogos</h2></div>}

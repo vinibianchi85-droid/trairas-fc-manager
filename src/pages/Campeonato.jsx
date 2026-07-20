@@ -1,1 +1,1 @@
-export default function Campeonato(){return(<div><h1>🏆 Campeonato</h1><p>Tabela e classificação.</p></div>);}
+export default function Campeonato(){return <div><h2>Campeonato</h2></div>}

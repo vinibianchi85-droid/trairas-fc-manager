@@ -1,1 +1,1 @@
-export default function Elenco(){return(<div className="elenco-page"><h1>👥 Elenco</h1><p>Cadastre os jogadores.</p></div>);}
+export default function Elenco(){return <div><h2>Elenco</h2></div>}
