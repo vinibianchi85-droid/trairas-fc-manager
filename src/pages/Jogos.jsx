@@ -1,63 +1,103 @@
-import { useEffect, useState } from "react";
-import JogoForm from "../components/JogoForm";
-import { load, save } from "../utils/storage";
-import { ordenarHistorico, filtrarJogos } from "../utils/historico";
+import { useState } from "react";
+
+import partidasIniciais from "../data/partidas";
+import jogadoresIniciais from "../data/jogadores";
+
+import PartidaForm from "../components/PartidaForm";
+import EscalacaoForm from "../components/EscalacaoForm";
+import EstatisticasPartida from "../components/EstatisticasPartida";
+
+import atualizarEstatisticas from "../utils/atualizarEstatisticas";
 
 export default function Jogos() {
 
-  const [jogos, setJogos] = useState(() =>
-    ordenarHistorico(load("jogos", []))
-  );
+  const [partidas, setPartidas] = useState(partidasIniciais);
 
-  const [busca, setBusca] = useState("");
+  const [jogadores, setJogadores] = useState(jogadoresIniciais);
 
-  useEffect(() => {
-    save("jogos", jogos);
-  }, [jogos]);
+  const [partidaAtual, setPartidaAtual] = useState(null);
 
-  function adicionar(jogo) {
-    setJogos(ordenarHistorico([...jogos, jogo]));
+  const [escalados, setEscalados] = useState([]);
+
+  function salvarPartida(partida) {
+
+    setPartidaAtual(partida);
+
+    setPartidas([...partidas, partida]);
+
   }
 
-  function excluir(id) {
-    if (!confirm("Excluir esta partida?")) return;
+  function salvarEscalacao(ids) {
 
-    setJogos(jogos.filter((j) => j.id !== id));
+    const lista = jogadores.filter((j) =>
+      ids.includes(j.id)
+    );
+
+    setEscalados(lista);
+
   }
 
-  const lista = filtrarJogos(jogos, busca);
+  function salvarEstatisticas(estatisticas) {
+
+    const atualizados = atualizarEstatisticas(
+      jogadores,
+      estatisticas
+    );
+
+    setJogadores(atualizados);
+
+    alert("Partida registrada com sucesso!");
+
+    setPartidaAtual(null);
+
+    setEscalados([]);
+
+  }
 
   return (
-    <div className="pagina">
 
-      <h1>⚽ Jogos</h1>
+    <div style={{ padding:20 }}>
 
-      <JogoForm onSalvar={adicionar} />
+      <h1>Jogos</h1>
 
-      <input
-        placeholder="Pesquisar adversário..."
-        value={busca}
-        onChange={(e) => setBusca(e.target.value)}
+      <PartidaForm
+        onSalvar={salvarPartida}
       />
 
-      {lista.map((jogo) => (
+      {
 
-        <div className="card" key={jogo.id}>
+        partidaAtual && (
 
-          <h3>{jogo.adversario}</h3>
+          <EscalacaoForm
 
-          <p>Data: {jogo.data || "-"}</p>
+            jogadores={jogadores}
 
-          <p>Placar: {jogo.placar}</p>
+            onSalvar={salvarEscalacao}
 
-          <button onClick={() => excluir(jogo.id)}>
-            Excluir
-          </button>
+          />
 
-        </div>
+        )
 
-      ))}
+      }
+
+      {
+
+        escalados.length>0 && (
+
+          <EstatisticasPartida
+
+            jogadoresEscalados={escalados}
+
+            onSalvar={salvarEstatisticas}
+
+          />
+
+        )
+
+      }
 
     </div>
+
   );
+
 }
