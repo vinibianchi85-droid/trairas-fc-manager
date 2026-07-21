@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function JogadorForm({ onSalvar }) {
+export default function JogadorForm({
+  onSalvar,
+  jogadorEditando,
+  cancelarEdicao
+}) {
 
-  const [form, setForm] = useState({
+  const modelo = {
     nome:"",
     numero:"",
     posicao:"",
@@ -12,45 +16,73 @@ export default function JogadorForm({ onSalvar }) {
     altura:"",
     peso:"",
     foto:""
-  });
+  };
+
+  const [form,setForm]=useState(modelo);
+
+  useEffect(()=>{
+
+    if(jogadorEditando){
+
+      setForm(jogadorEditando);
+
+    }else{
+
+      setForm(modelo);
+
+    }
+
+  },[jogadorEditando]);
 
   function alterar(e){
-    const {name,value}=e.target;
 
     setForm({
+
       ...form,
-      [name]:value
+
+      [e.target.name]:e.target.value
+
     });
+
   }
 
   function salvar(e){
+
     e.preventDefault();
 
     if(form.nome===""){
+
       alert("Informe o nome.");
+
       return;
+
     }
 
     onSalvar(form);
 
-    setForm({
-      nome:"",
-      numero:"",
-      posicao:"",
-      nascimento:"",
-      telefone:"",
-      pe:"Direito",
-      altura:"",
-      peso:"",
-      foto:""
-    });
+    setForm(modelo);
+
   }
 
   return(
 
 <form onSubmit={salvar}>
 
-<h2>Novo Jogador</h2>
+<h2>
+
+{
+
+jogadorEditando ?
+
+"Editar Jogador"
+
+:
+
+"Novo Jogador"
+
+}
+
+</h2>
 
 <input
 name="nome"
@@ -61,8 +93,8 @@ onChange={alterar}
 
 <input
 name="numero"
-placeholder="Número"
 type="number"
+placeholder="Número"
 value={form.numero}
 onChange={alterar}
 />
@@ -95,7 +127,9 @@ onChange={alterar}
 >
 
 <option>Direito</option>
+
 <option>Esquerdo</option>
+
 <option>Ambidestro</option>
 
 </select>
@@ -121,11 +155,39 @@ value={form.foto}
 onChange={alterar}
 />
 
-<button>
+<button type="submit">
 
-Salvar Jogador
+{
+
+jogadorEditando ?
+
+"Salvar Alterações"
+
+:
+
+"Salvar Jogador"
+
+}
 
 </button>
+
+{
+
+jogadorEditando && (
+
+<button
+type="button"
+onClick={cancelarEdicao}
+style={{marginLeft:10}}
+>
+
+Cancelar
+
+</button>
+
+)
+
+}
 
 </form>
 
