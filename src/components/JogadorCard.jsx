@@ -1,16 +1,20 @@
-export default function JogadorCard({ jogador }) {
+export default function JogadorCard({
+  jogador,
+  onEditar,
+  onExcluir
+}) {
   return (
     <div
       style={{
         display: "flex",
-        gap: "16px",
+        gap: 16,
         alignItems: "center",
         border: "1px solid #ddd",
-        borderRadius: "12px",
-        padding: "16px",
-        marginBottom: "16px",
+        borderRadius: 12,
+        padding: 16,
+        marginBottom: 16,
         background: "#fff",
-        boxShadow: "0 2px 8px rgba(0,0,0,.08)",
+        boxShadow: "0 2px 8px rgba(0,0,0,.08)"
       }}
     >
       <div>
@@ -23,7 +27,7 @@ export default function JogadorCard({ jogador }) {
               height: 90,
               borderRadius: "50%",
               objectFit: "cover",
-              border: "2px solid #16a34a",
+              border: "2px solid #16a34a"
             }}
           />
         ) : (
@@ -36,7 +40,7 @@ export default function JogadorCard({ jogador }) {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontSize: 42,
+              fontSize: 42
             }}
           >
             👤
@@ -49,24 +53,18 @@ export default function JogadorCard({ jogador }) {
           #{jogador.numero} {jogador.nome}
         </h2>
 
-        <p>
-          <strong>Posição:</strong> {jogador.posicao}
-        </p>
+        <p><strong>Posição:</strong> {jogador.posicao}</p>
 
-        <p>
-          <strong>Pé:</strong> {jogador.pe}
-        </p>
+        <p><strong>Pé:</strong> {jogador.pe}</p>
 
-        <p>
-          <strong>Telefone:</strong> {jogador.telefone}
-        </p>
+        <p><strong>Telefone:</strong> {jogador.telefone}</p>
 
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(2,1fr)",
             gap: 8,
-            marginTop: 10,
+            marginTop: 10
           }}
         >
           <div>⚽ {jogador.gols}</div>
@@ -82,18 +80,32 @@ export default function JogadorCard({ jogador }) {
           style={{
             marginTop: 15,
             display: "flex",
-            gap: 10,
+            gap: 10
           }}
         >
-          <button>
+          <button type="button">
             👁 Ver Perfil
           </button>
 
-          <button>
-            ✏ Editar
+          <button
+            type="button"
+            onClick={onEditar}
+          >
+            ✏️ Editar
           </button>
 
-          <button>
+          <button
+            type="button"
+            onClick={onExcluir}
+            style={{
+              background: "#dc2626",
+              color: "#fff",
+              border: "none",
+              borderRadius: 6,
+              padding: "8px 12px",
+              cursor: "pointer"
+            }}
+          >
             🗑 Excluir
           </button>
         </div>
