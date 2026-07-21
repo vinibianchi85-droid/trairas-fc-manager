@@ -1,6 +1,8 @@
 import { useState } from "react";
 import jogadoresIniciais from "../data/jogadores";
+
 import JogadorForm from "../components/JogadorForm";
+import JogadorCard from "../components/JogadorCard";
 
 export default function Elenco() {
   const [jogadores, setJogadores] = useState(jogadoresIniciais);
@@ -21,38 +23,24 @@ export default function Elenco() {
 
   return (
     <div style={{ padding: 20 }}>
-      <h2>Elenco</h2>
+
+      <h1>Elenco Traíras FC</h1>
 
       <JogadorForm onSalvar={adicionarJogador} />
 
-      <div style={{ marginTop: 20 }}>
-        {jogadores.map((jogador) => (
-          <div
+      <hr />
+
+      {jogadores.length === 0 ? (
+        <p>Nenhum jogador cadastrado.</p>
+      ) : (
+        jogadores.map((jogador) => (
+          <JogadorCard
             key={jogador.id}
-            style={{
-              border: "1px solid #ddd",
-              borderRadius: 10,
-              padding: 12,
-              marginBottom: 12,
-            }}
-          >
-            <h3>
-              #{jogador.numero} - {jogador.nome}
-            </h3>
+            jogador={jogador}
+          />
+        ))
+      )}
 
-            <p><strong>Posição:</strong> {jogador.posicao}</p>
-            <p><strong>Pé dominante:</strong> {jogador.pe}</p>
-            <p><strong>Telefone:</strong> {jogador.telefone}</p>
-
-            <hr />
-
-            <p>⚽ Gols: {jogador.gols}</p>
-            <p>🎯 Assistências: {jogador.assistencias}</p>
-            <p>🟨 Amarelos: {jogador.amarelos}</p>
-            <p>🟥 Vermelhos: {jogador.vermelhos}</p>
-          </div>
-        ))}
-      </div>
     </div>
   );
 }
