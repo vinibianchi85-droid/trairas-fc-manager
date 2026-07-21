@@ -52,9 +52,9 @@ export default function App() {
       </main>
 
       <BottomMenu
-        pagina={pagina}
-        setPagina={setPagina}
-      />
+  pagina={pagina}
+  setPagina={setPagina}
+/>
 
     </div>
   );
