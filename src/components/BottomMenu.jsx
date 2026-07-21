@@ -7,7 +7,7 @@ import {
   Settings,
 } from "lucide-react";
 
-import { colors } from "../styles/theme";
+import { colors } from "../style/theme";
 
 export default function BottomMenu() {
   const menu = [
