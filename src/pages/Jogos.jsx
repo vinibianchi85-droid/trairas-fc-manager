@@ -7,7 +7,7 @@ import PartidaForm from "../components/PartidaForm";
 import EscalacaoForm from "../components/EscalacaoForm";
 import EstatisticasPartida from "../components/EstatisticasPartida";
 
-import atualizarEstatisticas from "../utils/atualizarEstatisticas";
+import atualizarEstatisticas from "../utils/atualizarEstatisticas.js";
 
 export default function Jogos() {
 
