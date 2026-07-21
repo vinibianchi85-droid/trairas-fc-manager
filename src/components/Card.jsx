@@ -7,23 +7,47 @@ export default function Card({
   return (
     <div
       style={{
-        background: colors.card,
-        borderRadius: 16,
-        padding: 20,
-        marginBottom: 20,
-        boxShadow: "0 4px 12px rgba(0,0,0,.12)"
+        background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
+        color: colors.white,
+        borderRadius: 18,
+        padding: 22,
+        boxShadow: "0 8px 20px rgba(0,0,0,.20)",
+        transition: "0.25s",
+        cursor: "default",
+        overflow: "hidden",
+        position: "relative"
       }}
     >
+      <div
+        style={{
+          position: "absolute",
+          right: -30,
+          top: -30,
+          width: 120,
+          height: 120,
+          borderRadius: "50%",
+          background: "rgba(255,255,255,.08)"
+        }}
+      />
+
       <h3
         style={{
-          color: colors.primary,
-          marginBottom: 15
+          marginTop: 0,
+          marginBottom: 18,
+          fontSize: 18,
+          fontWeight: "bold"
         }}
       >
         {title}
       </h3>
 
-      {children}
+      <div
+        style={{
+          fontSize: 16
+        }}
+      >
+        {children}
+      </div>
     </div>
   );
 }
