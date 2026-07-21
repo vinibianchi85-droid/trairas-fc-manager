@@ -1,41 +1,13 @@
-import { NavLink } from "react-router-dom";
-import {
-  Home,
-  Users,
-  CalendarDays,
-  BarChart3,
-  Settings,
-} from "lucide-react";
-
 import { colors } from "../styles/theme";
 
-export default function BottomMenu() {
+export default function BottomMenu({ pagina, setPagina }) {
+
   const menu = [
-    {
-      rota: "/",
-      texto: "Home",
-      icone: <Home size={22} />,
-    },
-    {
-      rota: "/elenco",
-      texto: "Elenco",
-      icone: <Users size={22} />,
-    },
-    {
-      rota: "/jogos",
-      texto: "Jogos",
-      icone: <CalendarDays size={22} />,
-    },
-    {
-      rota: "/dashboard",
-      texto: "Dashboard",
-      icone: <BarChart3 size={22} />,
-    },
-    {
-      rota: "/admin",
-      texto: "Admin",
-      icone: <Settings size={22} />,
-    },
+    { id: "home", nome: "🏠", texto: "Home" },
+    { id: "elenco", nome: "👥", texto: "Elenco" },
+    { id: "jogos", nome: "⚽", texto: "Jogos" },
+    { id: "dashboard", nome: "📊", texto: "Dashboard" },
+    { id: "admin", nome: "⚙️", texto: "Admin" }
   ];
 
   return (
@@ -50,25 +22,33 @@ export default function BottomMenu() {
         display: "flex",
         justifyContent: "space-around",
         alignItems: "center",
-        boxShadow: "0 -3px 10px rgba(0,0,0,.3)",
+        boxShadow: "0 -3px 10px rgba(0,0,0,.3)"
       }}
     >
       {menu.map((item) => (
-        <NavLink
-          key={item.rota}
-          to={item.rota}
-          style={({ isActive }) => ({
+        <button
+          key={item.id}
+          onClick={() => setPagina(item.id)}
+          style={{
+            background: "transparent",
+            border: "none",
+            color:
+              pagina === item.id
+                ? colors.accent
+                : colors.white,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            textDecoration: "none",
-            fontSize: 12,
-            color: isActive ? colors.accent : colors.white,
-          })}
+            cursor: "pointer",
+            fontSize: 12
+          }}
         >
-          {item.icone}
+          <span style={{ fontSize: 22 }}>
+            {item.nome}
+          </span>
+
           {item.texto}
-        </NavLink>
+        </button>
       ))}
     </footer>
   );
